@@ -8,6 +8,7 @@ class Product:
         self.price = price
         self.stock_quantity = stock_quantity
 
+    # function to print the information
     def __str__(self):
         return (f"ID: {self.product_id}, "
                 f"Name: {self.name}, "
