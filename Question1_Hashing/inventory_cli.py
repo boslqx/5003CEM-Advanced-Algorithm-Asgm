@@ -40,7 +40,7 @@ def main():
             productID = input("Enter the product ID to search: ")
             product = hashtable.search(productID)
             if product:
-                print(f"Product Found: {product()}")
+                print(f"Product Found: {product}")
             else:
                 print("Product Not Found.")
 

@@ -21,7 +21,7 @@ class Hashtable:
         # check if key is alrady exist
         current = head
         while current:
-            if current == key:
+            if current.key == key:
                 current.value = value
                 return
             current = current.next
