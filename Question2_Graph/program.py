@@ -35,8 +35,12 @@ def menu():
     print("2. View profile of a user")
     print("3. View followed accounts of a user")
     print("4. View followers of a user")
+    print("5. Add a new user profile")
+    print("6. Follow a user")
+    print("7. Unfollow a user")
+    print("8. Exit")
     print("****************************************************")
-    print("5. Exit")
+    print("8. Exit")
     print("****************************************************")
 
 def main():
@@ -88,9 +92,48 @@ def main():
                     print("No followers.")
             else:
                 print("User not found.")
+        
+        # add new user profile
+        elif choice == "5":  
+            uid = input("Enter new user ID: ")
+            if uid in people:
+                print("User ID already exists.")
+            else:
+                name = input("Enter name: ")
+                gender = input("Enter gender: ")
+                bio = input("Enter bio: ")
+                privacy = input("Enter privacy (public/private): ").lower()
+                if privacy not in ["public", "private"]:
+                    privacy = "public"
+                people[uid] = Person(uid, name, gender, bio, privacy)
+                g.add_vertex(uid)
+                print("New user added successfully.")
+
+        # follow user on demand
+        elif choice == "6":
+            follower = input("Enter follower user ID: ")
+            followed = input("Enter followed user ID: ")
+            if follower in people and followed in people:
+                g.add_edge(follower, followed)
+                print(f"{people[follower].name} now follows {people[followed].name}.")
+            else:
+                print("Invalid user IDs.")
+
+        # unfollow user on demand
+        elif choice == "7":
+            follower = input("Enter follower user ID: ")
+            unfollowed = input("Enter user ID to unfollow: ")
+            if follower in people and unfollowed in people:
+                if unfollowed in g.adj_list.get(follower, set()):
+                    g.adj_list[follower].remove(unfollowed)
+                    print(f"{people[follower].name} unfollowed {people[unfollowed].name}.")
+                else:
+                    print(f"{people[follower].name} is not following {people[unfollowed].name}.")
+            else:
+                print("Invalid user IDs.")
 
         # exit
-        elif choice == "5":
+        elif choice == "8":
             print("Exiting...")
             break
         else:
