@@ -23,7 +23,7 @@ class Graph:
         for users, following in self.adj_list.items():
             if v in following:
                 followers.append(users)
-            return followers
+        return followers
             
     # print every user id         
     def display_graph(self):
