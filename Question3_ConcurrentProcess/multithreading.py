@@ -41,9 +41,13 @@ def run_thread(rounds=10):
         times.append(total_time)
         print(f"Round {r+1}: {total_time} ns")
 
+    # calculate total time
+    total_time = sum(times)
+    print(f"\nTotal Time (10 rounds): {total_time} ns")
+
     # calculate average time
     avg_time = sum(times) / len(times)
-    print(f"\nAverage Time (Threaded): {avg_time:.2f} ns")
+    print(f"Average Time (Threaded): {avg_time:.2f} ns")
 
 if __name__ == "__main__":
     run_thread()

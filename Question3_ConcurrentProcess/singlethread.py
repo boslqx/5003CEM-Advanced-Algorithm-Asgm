@@ -17,8 +17,13 @@ def run_single(rounds=10):
         times.append(total_time)
         print(f"Round {r+1}: {total_time} ns")
 
+    # calculate total time
+    total_time = sum(times)
+    print(f"\nTotal Time (10 rounds): {total_time} ns")
+
+    # calculate avg time
     avg_time = sum(times) / len(times)
-    print(f"\nAverage Time (Single-threaded): {avg_time:.2f} ns")
+    print(f"Average Time (Single-threaded): {avg_time:.2f} ns")
 
 if __name__ == "__main__":
     run_single()
