@@ -10,6 +10,7 @@ class Hashtable:
         self.size = size
         self.table = [None] * size # create array
 
+    # convert key to index
     def _hash(self, key):
         return hash(key) % self.size
     
